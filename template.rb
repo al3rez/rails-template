@@ -65,7 +65,7 @@ def config_jwt_for_devise!
         registrations: "registrations"
       }
   REPLACE_WITH
-  insert_into_file "app/controllers/application_controller.rb", "  include ActionController::MimeResponds", afer: "ApplicationController < ActionController::API\n"
+  insert_into_file "app/controllers/application_controller.rb", "  include ActionController::MimeResponds\n", afer: "class ApplicationController < ActionController::API\n"
   insert_into_file "app/controllers/sessions_controller.rb", "  respond_to :json\n", after: "class SessionsController < Devise::SessionsController\n"
   insert_into_file "app/controllers/registrations_controller.rb", "  respond_to :json\n", after: "class RegistrationsController < Devise::RegistrationsController\n"
   sessions_controller_tests = <<-TESTS
